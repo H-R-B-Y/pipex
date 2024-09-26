@@ -4,3 +4,6 @@ subject_notes/en.subject.pdf
 main
 *.o
 *.out
+libft/*
+libft/
+libft
