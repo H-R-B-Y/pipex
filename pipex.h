@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 13:27:32 by hbreeze           #+#    #+#             */
-/*   Updated: 2024/09/26 14:13:26 by hbreeze          ###   ########.fr       */
+/*   Updated: 2024/09/26 19:40:20 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 
 # include "libft/libft.h"
 /*
-Usage:
-ft_split
-- Split the envp.
-ft_strchr
-- Create a pointer to the first '=' sign in envp
 */
 
 # include <unistd.h>
@@ -41,10 +36,5 @@ ft_strchr
 # include <sys/wait.h>
 /*
 */
-
-
-void	cleanup(char **envpaths);
-char	**get_path(char **envp);
-
 
 #endif
