@@ -6,32 +6,32 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:09:01 by hbreeze           #+#    #+#             */
-/*   Updated: 2024/09/26 19:43:41 by hbreeze          ###   ########.fr       */
+/*   Updated: 2024/09/27 21:03:46 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-// For testing.
-#include <stdio.h>
-
-void	init_pipe(int argc, char **argv, int *my_pipe, int *last_pipe)
-/*
-This will need to check the permissions for the file and return an error code.
-*/
+int	init_pipe(int argc, char **argv, int *my_pipe, int *last_pipe)
 {
 	int fd;
-	
+
+	if (!my_pipe || !last_pipe)
+		return (1);
 	close(last_pipe[1]);
 	dup2(last_pipe[0], STDIN_FILENO);
 	if (argc == 2)
 	{
-		fd = open(argv[1], O_WRONLY | O_CREAT, 0777);
+		if (access(argv[1], F_OK) != 0)
+			fd = open(argv[1], O_WRONLY | O_CREAT, 0777);
+		else
+			fd = open(argv[1], O_WRONLY);
 		dup2(fd, STDOUT_FILENO);
-		return ;
+		return (0);
 	}
 	pipe(my_pipe);
 	dup2(my_pipe[1], STDOUT_FILENO);
+	return (0);
 }
 
 // // TEST FOR INIT_PIPE
@@ -71,7 +71,6 @@ This will need to check the permissions for the file and return an error code.
 
 char	**get_path(char **envp)
 {
-	char **p;
 	char **envpaths;
 	
 	envpaths = 0;
@@ -92,28 +91,27 @@ WARN: this needs to be better protected.
 */
 char	**prepare_cmd(char **argv)
 {
-	char **commands = ft_split(*argv, ' ');
-	char **paths = get_path(__environ);
-	char **path_head = paths;
+	char **commands;
+	char **paths;
+	char **path_head;
 	char *cmd;
+	
+	paths = get_path(__environ);
+	commands = ft_split(*argv, ' ');
+	path_head = paths;
+	if (!paths || !commands)
+		return (0);
 	if ((**commands == '.' || **commands == '/')
-		&& access(*commands, F_OK) == 0 && access(*commands, X_OK) == 0)
+		&& !access(*commands, F_OK) && !access(*commands, X_OK))
 		return (commands);
 	while(paths && *paths)
 	{
 		cmd = ft_strjoin(*paths, ft_strjoin("/", commands[0]));
 		if (access(cmd, F_OK) == 0 && access(cmd, X_OK) == 0)
-		{
-			free(commands[0]);
-			commands[0] = cmd;
-			return (commands);
-		}
-		free(cmd);
-		free(*paths);
-		paths++;
+			return (free(commands[0]), commands[0] = cmd, commands);
+		free(cmd), free(*paths++);
 	}
 	free(path_head);
-	printf("Command was not found!");
 	return (0);
 }
 
@@ -144,28 +142,23 @@ void	generalised_child_function(int argc, char **argv, int *last_pipe)
 	int my_pipe[2];
 	int pid;
 	char **cmd;
-	
 
-	init_pipe(argc, argv, my_pipe, last_pipe);
+	if (init_pipe(argc, argv, my_pipe, last_pipe))
+		(close(my_pipe[0]), close(my_pipe[0]), exit(1));
+	cmd = prepare_cmd(argv);
+	if (!cmd)
+		(ft_putstr_fd("Command not found!", 1), exit(1));
 	if (argc > 2)
 		pid = fork();
 	else
 		pid = 1;
 	if (pid)
-	{
-		close(my_pipe[0]);
-		cmd = prepare_cmd(argv);
-		if (cmd)
-			execve(cmd[0], cmd + 1, __environ);
-		close(my_pipe[1]);
-		exit(1);
-	}
+		(close(my_pipe[0]), execve(cmd[0], cmd + 1, __environ));
 	else if (argc > 2)
 		generalised_child_function(argc - 1, argv + 1, my_pipe);
 }
 
-
-int main (int argc, char **argv)
+int main(int argc, char **argv)
 {
 	if (argc == 1)
 		return (1);
@@ -188,15 +181,7 @@ int main (int argc, char **argv)
 		execve(cmd[0], &(cmd[1]), __environ);
 	}
 	else
+	{
 		generalised_child_function(argc-3, &(argv[3]), my_pipe);
+	}
 }
-/*
-Check the flags '.', '-' and 0.
-Check the %-d with INT_MIN
-Check the - flag with any value.
-Check the 0 flag like %04d.
-Check the '.' with multiple precisions.
-For every test, verify the return value matches the original one.
-For each working flag, give 1 point.
-If all the flags work, give 2 bonus points.
-*/
