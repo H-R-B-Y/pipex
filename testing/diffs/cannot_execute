@@ -1,0 +1,6 @@
+0a1
+> Command not found!
+\ No newline at end of file
+1d0
+< /bin/sh: 1: ./static/no_permissions: Permission denied
+

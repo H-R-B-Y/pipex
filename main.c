@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:09:01 by hbreeze           #+#    #+#             */
-/*   Updated: 2024/09/27 21:03:46 by hbreeze          ###   ########.fr       */
+/*   Updated: 2024/10/03 18:56:21 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	init_pipe(int argc, char **argv, int *my_pipe, int *last_pipe)
 
 	if (!my_pipe || !last_pipe)
 		return (1);
+	if (argc < 2)
+		return (0);
 	close(last_pipe[1]);
 	dup2(last_pipe[0], STDIN_FILENO);
 	if (argc == 2)
@@ -25,7 +27,9 @@ int	init_pipe(int argc, char **argv, int *my_pipe, int *last_pipe)
 		if (access(argv[1], F_OK) != 0)
 			fd = open(argv[1], O_WRONLY | O_CREAT, 0777);
 		else
-			fd = open(argv[1], O_WRONLY);
+			fd = open(argv[1], O_WRONLY | O_TRUNC);
+		if (fd < 0)
+			return (close(last_pipe[0]), 1);
 		dup2(fd, STDOUT_FILENO);
 		return (0);
 	}
@@ -41,13 +45,10 @@ int	init_pipe(int argc, char **argv, int *my_pipe, int *last_pipe)
 // 	int tmp[2];
 // 	tmp[0] = open("./main.c", O_RDONLY);
 // 	tmp[1] = open("./Makefile", O_RDONLY);
-
 // 	// Create a new pipe.
 // 	int pip[2];
-
 // 	// Initialise a dummy argv (2 commands and 1 output file)
-// 	char *argvvvv[] = {"test", "test", "./output_test_initpipe"};
-	
+// 	char *argvvvv[] = {"test", "test", "./output_test_initpipe"};	
 // 	// Init a pipe at argc == 3
 // 	// 	This will close tmp[1] (writing end)
 // 	// 	duplicate tmp[0] (reading end) into STDIN
@@ -55,7 +56,6 @@ int	init_pipe(int argc, char **argv, int *my_pipe, int *last_pipe)
 // 	// 	and duplicate pip[1] (writing end) into the STDOUT
 // 	init_pipe(3, argvvvv, pip, tmp);
 // 	int pip2[2];
-
 // 	// Init a pipe at argc == 2
 // 	// 	Will close pip[1] (writing end)
 // 	// 	Duplucate pip[0] (reading end) into STDIN
@@ -63,7 +63,6 @@ int	init_pipe(int argc, char **argv, int *my_pipe, int *last_pipe)
 // 	// 	Then duplicate the fd into STDOUT
 // 	init_pipe(2, &(argvvvv[1]), pip2, pip);
 // 	char *temp2[] = {0};
-	
 // 	// Because nothing is written into pip[1]
 // 	// Nothing is written to the file
 // 	execve("/usr/bin/cat", temp2, __environ);
@@ -122,12 +121,10 @@ char	**prepare_cmd(char **argv)
 // 	// ARGV will be passed to prepare cmd.
 // 	// DUMMY ARGV containing cat command.
 // 	char *cmd1[] = {"cat", 0};
-
 // 	// Prepare command searches path for cat binary.
 // 	// Returning string array startign with path for cat binary.
 // 	args = prepare_cmd(cmd1);
 // 	printf("%s %s\n", args[0], args[1]);
-
 // 	// DUMMY ARGV containing a command and it's flag
 // 	char *cmd2[] = {"cat -A", 0};
 // 	// Prepare command searches path for binary.
@@ -137,14 +134,14 @@ char	**prepare_cmd(char **argv)
 // 	printf("%s %s %s\n", args[0], args[1], args[2]);
 // }
 
-void	generalised_child_function(int argc, char **argv, int *last_pipe)
+void	general_child_func(int argc, char **argv, int *last_pipe)
 {
 	int my_pipe[2];
 	int pid;
 	char **cmd;
 
 	if (init_pipe(argc, argv, my_pipe, last_pipe))
-		(close(my_pipe[0]), close(my_pipe[0]), exit(1));
+		(close(my_pipe[0]), close(my_pipe[1]), exit(1));
 	cmd = prepare_cmd(argv);
 	if (!cmd)
 		(ft_putstr_fd("Command not found!", 1), exit(1));
@@ -153,9 +150,11 @@ void	generalised_child_function(int argc, char **argv, int *last_pipe)
 	else
 		pid = 1;
 	if (pid)
-		(close(my_pipe[0]), execve(cmd[0], cmd + 1, __environ));
+		(close(my_pipe[0]), execve(cmd[0], &cmd[0], __environ));
 	else if (argc > 2)
-		generalised_child_function(argc - 1, argv + 1, my_pipe);
+		general_child_func(argc - 1, argv + 1, my_pipe);
+	free(cmd), close(last_pipe[0]);
+	close(my_pipe[0]), close(my_pipe[1]);
 }
 
 int main(int argc, char **argv)
@@ -174,14 +173,12 @@ int main(int argc, char **argv)
 		close(my_pipe[0]);
 		fd = open(argv[1], O_RDONLY);
 		if (!fd)
-			perror("FUCKING FAILED TO OPEN THE FILE!");
+			(perror("FUCKING FAILED TO OPEN THE FILE!"), exit(1));
 		dup2(fd, STDIN_FILENO);
 		dup2(my_pipe[1], STDOUT_FILENO);
-		cmd = prepare_cmd(&(argv[2]));
-		execve(cmd[0], &(cmd[1]), __environ);
+		cmd = prepare_cmd(argv + 2);
+		execve(cmd[0], &cmd[0], __environ);
 	}
 	else
-	{
-		generalised_child_function(argc-3, &(argv[3]), my_pipe);
-	}
+		general_child_func(argc-3, argv + 3, my_pipe);
 }

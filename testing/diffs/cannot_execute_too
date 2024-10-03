@@ -1,0 +1,4 @@
+Files /home/hbreeze/Documents/work/pipex/testing/temp/cannot_execute_too_post and /home/hbreeze/Documents/work/pipex/testing/temp/cannot_execute_too_mine_post are identical
+1d0
+< /bin/sh: 1: ./static/no_permissions: Permission denied
+

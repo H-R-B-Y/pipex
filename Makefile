@@ -19,36 +19,36 @@ all:			$(NAME) Makefile $(HEADER)
 
 # Compile objects for named sources.
 .c.o:
-		
 		$(CC) $(CFLAGS) -c $< 
 
 # Compile IDK something, i dont think we need to compile this one LOL
 $(NAME):		$(MAIN) $(OBJ) $(LIBFT)
-		
 		$(CC) $(CFLAGS) $(MAIN) $(OBJ) $(LIBFT) -o $(NAME)
 
 
 # Compile LIBFT dependency
 $(LIBFT):
-		
 		$(MAKE) --directory $(LIBFT_DIR)
+
+bonus:		$(NAME)
 
 # Clean
 clean:
-		
 		$(MAKE) --directory $(LIBFT_DIR) clean
 		rm -f *.o
 		rm -f libft.a
 
 # Full Clean
-fclean:			clean
-		
+fclean:
 		$(MAKE) --directory $(LIBFT_DIR) fclean
+		rm -f *.o
 		rm -f $(NAME)
 		rm -f libft.a
+
+test:			$(NAME)
 
 # Relink
 re:				fclean all
 
 # Phony Targets don't produce a named target.
-.PHONY:			fclean clean all re test quicktest
+.PHONY:			fclean clean all re
