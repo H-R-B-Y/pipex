@@ -1,54 +1,56 @@
-NAME			= pipex
+NAME			:= pipex
+CFLAGS			:= -Wextra -Wall -Werror -g3 -O0
 
-MAIN			= main.c
+HEADERS			:= -I ./include
 
-SRC				= 
+LIB_DIR			:= ./lib
 
-OBJ				= $(SRC:.c=.o)
-LIBFT_DIR		= libft
-LIBFT			= libft/libft.a
+LIBFT_DIR		:= $(abspath $(LIB_DIR)/libft)
+LIBFT			:= $(LIBFT_DIR)/libft.a
 
-HEADER			= pipex.h
+SRC_DIR			:= ./src
+SRCS			:= $(SRC_DIR)/get_cmd.c \
+				$(SRC_DIR)/stack_handler.c \
+				$(SRC_DIR)/utils.c \
+				$(SRC_DIR)/validate_files.c
 
-CC				= cc
-CFLAGS			= -Wall -Wextra -Werror -g -O0
+OBJS			:= ${SRCS:.c=.o}
 
+MAIN			:= $(SRC_DIR)/main.c
 
-# All target
-all:			$(NAME) Makefile $(HEADER)
+all: $(NAME)
 
-# Compile objects for named sources.
-.c.o:
-		$(CC) $(CFLAGS) -c $< 
-
-# Compile IDK something, i dont think we need to compile this one LOL
-$(NAME):		$(MAIN) $(OBJ) $(LIBFT)
-		$(CC) $(CFLAGS) $(MAIN) $(OBJ) $(LIBFT) -o $(NAME)
-
-
-# Compile LIBFT dependency
 $(LIBFT):
-		$(MAKE) --directory $(LIBFT_DIR)
+		$(MAKE) --directory $(LIBFT_DIR) all CFLAGS="$(CFLAGS)"
 
-bonus:		$(NAME)
+.c.o:
+		$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
 
-# Clean
+
+$(NAME): $(MAIN) $(OBJS) $(LIBFT)
+		$(CC) $(CFLAGS) $(MAIN) $(OBJS) $(LIBFT) -o $(NAME)
+
 clean:
 		$(MAKE) --directory $(LIBFT_DIR) clean
-		rm -f *.o
-		rm -f libft.a
+		rm -rf $(OBJS)
 
-# Full Clean
-fclean:
+fclean: clean
 		$(MAKE) --directory $(LIBFT_DIR) fclean
-		rm -f *.o
-		rm -f $(NAME)
-		rm -f libft.a
+		rm -rf $(NAME)
 
-test:			$(NAME)
+rm:
+		rm -rf $(NAME)
 
-# Relink
-re:				fclean all
+re: fclean all
 
-# Phony Targets don't produce a named target.
-.PHONY:			fclean clean all re
+.PHONY: all, clean, fclean, re, test
+
+# HB_MATH_DIR		:= $(abspath $(LIB_DIR)/hb_math_ext)
+# HB_MATH			:= $(HB_MATH_DIR)/hb_math_ext.a
+# LIBMLX_DIR		:= $(abspath $(LIB_DIR)/MLX42)
+# LIBMLX			:= $(LIBMLX_DIR)/build/libmlx42.a
+# LIBFLAGS		:=  -ldl `pkg-config --libs glfw3` -pthread -lm
+# $(LIBMLX):
+# 		cmake $(LIBMLX_DIR) -B $(LIBMLX_DIR)/build && make CFLAGS="$(CFLAGS)" -C $(LIBMLX_DIR)/build -j4
+# $(HB_MATH):
+# 		$(MAKE) --directory $(HB_MATH_DIR) all CFLAGS="$(CFLAGS)"

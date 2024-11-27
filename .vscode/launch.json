@@ -8,8 +8,33 @@
 			"name": "(gdb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "pipex",
-			"args": ["pipex.h", "wc -l", "cat", "ouput"],
+			"program": "${workspaceRoot}/pipex",
+			"args": ["Makefile", "wc -l", "cat", "wc -m", "cat", "ouput"],
+			"stopAtEntry": false,
+			"cwd": "${workspaceRoot}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "gdb",
+			"setupCommands": [
+				{
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				},
+				{
+					"description": "Set Disassembly Flavor to Intel",
+					"text": "-gdb-set disassembly-flavor intel",
+					"ignoreFailures": true
+				}
+			],
+			"preLaunchTask": "Default Make"
+		},
+		{
+			"name": "std aout",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${fileDirname}/a.out",
+			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],

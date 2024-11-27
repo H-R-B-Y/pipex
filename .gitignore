@@ -3,7 +3,3 @@ subject_notes/*
 *output
 main
 *.o
-*.out
-libft/*
-libft/
-libft
