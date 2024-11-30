@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="j4c2gvxmbqvm7NvfZXHG" name="Page-1">
-        <mxGraphModel dx="1982" dy="1044" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="2290" dy="923" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -10,185 +10,191 @@
                 <mxCell id="3" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Base case.&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;dropTarget=1;collapsible=0;recursiveResize=0;container=1;allowArrows=0;" parent="1" vertex="1">
                     <mxGeometry x="290" y="60" width="1040" height="900" as="geometry"/>
                 </mxCell>
-                <mxCell id="44" value="Start main&lt;br&gt;check enough args provided" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="106" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="3" source="44" target="45">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="44" value="Start main&lt;br&gt;check enough args provided" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="30" y="50" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="45" value="validate input file.&lt;br&gt;validate output file (create)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="107" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="3" source="45" target="46">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="validate input file.&lt;br&gt;validate output file (create)" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="30" y="160" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="50" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="3" source="46" target="47">
+                <mxCell id="50" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="3" source="46" target="47" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="46" value="validate commands and add too command queue" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="46" value="validate commands and add too command queue" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="30" y="250" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="49" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fillColor=#d80073;strokeColor=#A50040;" edge="1" parent="3" source="47" target="48">
+                <mxCell id="49" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fillColor=#d80073;strokeColor=#A50040;" parent="3" source="47" target="48" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="52" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="3" source="47" target="51">
+                <mxCell id="52" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="3" source="47" target="51" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="47" value="if any errors in above validation steps" style="rounded=0;whiteSpace=wrap;html=1;direction=west;" vertex="1" parent="3">
+                <mxCell id="47" value="if any errors in above validation steps" style="rounded=0;whiteSpace=wrap;html=1;direction=west;" parent="3" vertex="1">
                     <mxGeometry x="30" y="340" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="48" value="cleanup and exit&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="48" value="cleanup and exit&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="260" y="340" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="75" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="3" source="51" target="53">
+                <mxCell id="75" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="3" source="51" target="53" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="51" value="start execution loop" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="51" value="start execution loop" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="30" y="450" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="69" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="3" source="53" target="54">
+                <mxCell id="69" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="3" source="53" target="54" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="53" value="Dequeue a command" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="53" value="Dequeue a command" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="230" y="460" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="72" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="3" source="54" target="55">
+                <mxCell id="72" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="3" source="54" target="55" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="54" value="if there is another command in queue then create pipe." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="54" value="if there is another command in queue then create pipe." style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="400" y="460" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="70" style="edgeStyle=none;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="3" source="55" target="56">
+                <mxCell id="70" style="edgeStyle=none;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="3" source="55" target="56" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="71" style="edgeStyle=none;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="3" source="55" target="57">
+                <mxCell id="71" style="edgeStyle=none;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="3" source="55" target="57" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="55" value="fork&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="55" value="fork&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="400" y="560" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="67" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="3" source="56" target="64">
+                <mxCell id="67" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="3" source="56" target="64" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="68" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;" edge="1" parent="3" source="56" target="53">
+                <mxCell id="68" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fillColor=#0050ef;strokeColor=#001DBC;" parent="3" source="56" target="53" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="270" y="610"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="56" value="if there is another cmmand in the queue then recur." style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="56" value="if there is another cmmand in the queue then recur." style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="310" y="640" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="62" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="3" source="57" target="60">
+                <mxCell id="62" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="3" source="57" target="60" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="57" value="if there is another command in the queue redirect output to pipe.&lt;br&gt;else redirect output to output file" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="57" value="if there is another command in the queue redirect output to pipe.&lt;br&gt;else redirect output to output file" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="480" y="640" width="160" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="58" value="child" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="3">
+                <mxCell id="58" value="child" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="3" vertex="1">
                     <mxGeometry x="540" y="610" width="60" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="59" value="parent" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="3">
+                <mxCell id="59" value="parent" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="3" vertex="1">
                     <mxGeometry x="310" y="610" width="60" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="63" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="3" source="60" target="61">
+                <mxCell id="63" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="3" source="60" target="61" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="60" value="redirect inputfd to stdin" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="60" value="redirect inputfd to stdin" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="500" y="740" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="74" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fillColor=#60a917;strokeColor=#2D7600;" edge="1" parent="3" source="61" target="64">
+                <mxCell id="74" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fillColor=#60a917;strokeColor=#2D7600;" parent="3" source="61" target="64" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="61" value="execute cmd" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="61" value="execute cmd" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="500" y="820" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="66" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="3" source="64" target="65">
+                <mxCell id="66" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="3" source="64" target="65" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="64" value="wait for child process to finish and get retcode" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="64" value="wait for child process to finish and get retcode" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="310" y="730" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="73" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="3" source="65" target="76">
+                <mxCell id="73" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="3" source="65" target="76" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="65" value="return retcode" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="65" value="return retcode" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="310" y="820" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="79" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="3" source="76" target="78">
+                <mxCell id="79" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="3" source="76" target="78" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="76" value="cleanup" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="76" value="cleanup" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="30" y="670" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="78" value="return retcode of last cmd&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="78" value="return retcode of last cmd&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="30" y="790" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="80" value="finally" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="3">
+                <mxCell id="80" value="finally" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="3" vertex="1">
                     <mxGeometry x="140" y="670" width="60" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="81" value="recur" style="text;html=1;strokeColor=#001DBC;fillColor=#0050ef;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" vertex="1" parent="3">
+                <mxCell id="81" value="recur" style="text;html=1;strokeColor=#001DBC;fillColor=#0050ef;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" parent="3" vertex="1">
                     <mxGeometry x="260" y="580" width="40" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="82" value="wait" style="text;html=1;strokeColor=#2D7600;fillColor=#60a917;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" vertex="1" parent="3">
+                <mxCell id="82" value="wait" style="text;html=1;strokeColor=#2D7600;fillColor=#60a917;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" parent="3" vertex="1">
                     <mxGeometry x="440" y="790" width="40" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="83" value="error" style="text;html=1;strokeColor=#A50040;fillColor=#d80073;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" vertex="1" parent="3">
+                <mxCell id="83" value="error" style="text;html=1;strokeColor=#A50040;fillColor=#d80073;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" parent="3" vertex="1">
                     <mxGeometry x="190" y="360" width="40" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="84" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="84" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="560" y="30" width="460" height="530" as="geometry"/>
                 </mxCell>
-                <mxCell id="90" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="3" source="85" target="89">
+                <mxCell id="90" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="3" source="85" target="89" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="85" value="INPUT FILE FD" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="85" value="INPUT FILE FD" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="600" y="40" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="104" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" vertex="1" parent="3">
+                <mxCell id="104" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;" parent="3" vertex="1">
                     <mxGeometry x="590" y="190" width="410" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="101" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="3" source="86" target="95">
+                <mxCell id="101" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="3" source="86" target="95" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="86" value="PIPE INPUT" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="86" value="PIPE INPUT" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="600" y="120" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="93" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="3" source="87" target="92">
+                <mxCell id="93" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="3" source="87" target="92" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="87" value="PIPE OUTPUT" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="87" value="PIPE OUTPUT" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="600" y="400" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="88" value="OUTPUT FILE FD" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="88" value="OUTPUT FILE FD" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="600" y="480" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="91" style="edgeStyle=none;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="3" source="89" target="86">
+                <mxCell id="91" style="edgeStyle=none;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" parent="3" source="89" target="86" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="89" value="CMD 1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="89" value="CMD 1" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="840" y="90" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="94" style="edgeStyle=none;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="3" source="92" target="88">
+                <mxCell id="94" style="edgeStyle=none;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" parent="3" source="92" target="88" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="92" value="LAST CMD" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="92" value="LAST CMD" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="840" y="440" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="98" style="edgeStyle=none;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="3" source="95" target="97">
+                <mxCell id="98" style="edgeStyle=none;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="3" source="95" target="97" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="95" value="PIPE OUTPUT" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="95" value="PIPE OUTPUT" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="600" y="200" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="100" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="3" source="96" target="87">
+                <mxCell id="100" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="3" source="96" target="87" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="96" value="PIPE INPUT" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="96" value="PIPE INPUT" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="600" y="320" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="99" style="edgeStyle=none;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="3" source="97" target="96">
+                <mxCell id="99" style="edgeStyle=none;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" parent="3" source="97" target="96" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="97" value="in between commands" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="3">
+                <mxCell id="97" value="in between commands" style="rounded=0;whiteSpace=wrap;html=1;" parent="3" vertex="1">
                     <mxGeometry x="840" y="265" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="105" value="Loops for all inbetween commands" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="3">
+                <mxCell id="105" value="Loops for all inbetween commands" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="3" vertex="1">
                     <mxGeometry x="810" y="200" width="180" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="5" value="if output file doesnt exist then create it.&lt;br&gt;if command is not found print to stderr&lt;br&gt;if read file not found print to stderr&lt;br&gt;if cannot write due to ermissions then err&lt;br&gt;file is overwritten&lt;br&gt;if cannot read input then error" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
