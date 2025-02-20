@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   stack_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbreeze <hbreeze@student.42.fr>            #+#  +:+       +#+        */
+/*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-25 16:27:20 by hbreeze           #+#    #+#             */
-/*   Updated: 2024-11-25 16:27:20 by hbreeze          ###   ########.fr       */
+/*   Created: 2024/11/25 16:27:20 by hbreeze           #+#    #+#             */
+/*   Updated: 2025/02/20 17:25:16 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
-
-// t_list	*ft_lstpop(t_list **lst)
-// {
-// 	size_t	lst_size;
-// 	t_list	*output;
-
-// 	lst_size = ft_lstsize(*lst);
-// 	output = ft_lstlast(*lst);
-// 	if (lst_size == 1)
-// 		*lst = 0;
-// 	else
-// 		ft_lstget(*lst, lst_size - 2)->next = 0;
-// 	return (output);
-// }
 
 void	print_cmd_err(char *cmd)
 {
@@ -32,7 +18,7 @@ void	print_cmd_err(char *cmd)
 	ft_putendl_fd(": command not found", STDERR_FILENO);
 }
 
-t_cmddesc get_validcmd(char *cmd)
+t_cmddesc	get_validcmd(char *cmd)
 {
 	t_cmddesc	cmdsplt;
 	char		*realpath;

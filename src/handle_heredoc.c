@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 15:38:36 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/02/20 16:06:55 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/02/20 17:25:26 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,3 @@ int	setup_heredoc(char *endstr, int *io_fds)
 	}
 	return (pid);
 }
-
-

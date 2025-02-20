@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbreeze <hbreeze@student.42.fr>            #+#  +:+       +#+        */
+/*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-25 15:04:22 by hbreeze           #+#    #+#             */
-/*   Updated: 2024-11-25 15:04:22 by hbreeze          ###   ########.fr       */
+/*   Created: 2024/11/25 15:04:22 by hbreeze           #+#    #+#             */
+/*   Updated: 2025/02/20 17:59:11 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-extern char **environ;
+extern char	**environ;
 
 /*
 For use when a path is supplied
@@ -33,8 +33,8 @@ etc, etc
 */
 char	**get_path(void)
 {
-	char **envpaths;
-	
+	char	**envpaths;
+
 	envpaths = 0;
 	while (environ && *environ)
 	{
@@ -77,46 +77,3 @@ char	*get_cmdpath(char *cmd)
 	ft_deletesplit(paths);
 	return (tmp);
 }
-
-// /*
-// Strip args from cmd string
-// */
-// char *isolate_cmd(char *cmdv)
-// {
-// 	char *tmp;
-
-// 	if (!cmdv)
-// 		return ((void *)0);
-// 	tmp = ft_strchr(cmdv, ' ');
-// 	if (!tmp)
-// 		tmp = ft_strdup(cmdv);
-// 	else
-// 		tmp = ft_substr(cmdv, 0, (tmp - cmdv));
-// 	return (tmp);
-// }
-
-
-// /*
-// Test
-// */
-// int main(int argc, char **argv)
-// {
-// 	char *str = "cat lol.txt";
-// 	char *test;
-// 	char *path;
-
-// 	test = isolate_cmd(str);
-// 	if (!(*test == '.' || *test == '/'))
-// 		path = get_cmdpath(test);
-// 	else
-// 		path = ft_strdup(test);
-// 	if (check_cmdpath(path))
-// 	{
-// 		ft_printf("%s\n", test);
-// 		ft_printf("%s\n", path);
-// 	}
-// 	else
-// 		ft_printf("ERR: cmd not found");
-// 	free(test);
-// 	free(path);
-// }

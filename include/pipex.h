@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:58:48 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/02/20 16:33:11 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/02/20 18:07:07 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef enum e_err
 
 typedef char	**t_cmddesc;
 //	char	**commandwithargs;
-
 
 // cmd prep
 int		check_cmdpath(char *cmd);
