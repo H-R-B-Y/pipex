@@ -6,11 +6,11 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 13:47:00 by hbreeze           #+#    #+#             */
-/*   Updated: 2024/09/28 19:08:09 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/02/13 16:38:55 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../include/get_next_line.h"
 
 char	*fancy_str_join( char *s1, char *s2, int flag)
 {

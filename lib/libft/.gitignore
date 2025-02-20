@@ -1,0 +1,8 @@
+.vscode
+.vscode/*
+notes.txt
+PRINTMEMORY.c
+a.out
+*.o
+*_old*
+*.a

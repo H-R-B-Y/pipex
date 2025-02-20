@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 17:21:04 by hbreeze           #+#    #+#             */
-/*   Updated: 2024/10/01 19:13:06 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/02/20 15:43:36 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 // ██ ████ ██ ███████ ██ ██  ██ ██   ██ ███████    ██    █████   
 // ██  ██  ██ ██   ██ ██  ██ ██ ██   ██ ██   ██    ██    ██      
 // ██      ██ ██   ██ ██   ████ ██████  ██   ██    ██    ███████ 
-
-
 
 /**
  * @brief Check if a character is a letter
@@ -69,7 +67,7 @@ int				ft_iswhitespace(int c);
  * @brief Convert a character to uppercase
  * @param c Character to convert
  * @return c if c is not a lowercase letter OR the uppercase variant of c
- */ 
+ */
 int				ft_toupper(int c);
 
 /**
@@ -179,7 +177,8 @@ char			*ft_strjoin(const char *s1, const char *s2);
  * @brief Trim a set of characters from the start and end of a string
  * @param s1 String to trim
  * @param set Set of characters to trim
- * @return A malloc'd string containing s1 with set trimmed from the start and end
+ * @return A malloc'd string containing s1 with set
+ * 	trimmed from the start and end
  * @warning Strings must be null terminated
  */
 char			*ft_strtrim(const char*s1, const char *set);
@@ -188,11 +187,31 @@ char			*ft_strtrim(const char*s1, const char *set);
  * @brief Split a string by a character
  * @param str String to split
  * @param c Character to split by
- * @return A malloc'd array of strings containing the split string
+ * @return A malloc'd array of split substrings.
  * @warning String must be null terminated
  * @warning All substrings must be free'd
  */
 char			**ft_split(const char *str, char c);
+
+/**
+ * @brief Split a string by a function
+ * @param str String to split
+ * @param delim function used to determine if a char is a deliminator
+ * @return A malloc'd array of split substrings.
+ * @warning String must be null terminated
+ * @warning All substrings must be free'd
+ */
+char			**ft_splitfn(char const *s, int (*delim)(int c));
+
+/**
+ * @brief Split but uses a function and doesn't split when quoted.
+ * @param str String to split.
+ * @param delim Function to use to denote deliminator.
+ * @return A malloc'd array of split substrings.
+ * @warning String must be null terminated.
+ * @warning All substring must be free'd 
+ */
+char			**ft_splitquoted(const char *str, int (*delim)(int c));
 
 // Memory functions
 
@@ -427,5 +446,12 @@ t_list			*ft_lstget(t_list *lst, size_t index);
 void			ft_lstiter_param(t_list *lst,
 					void (*f)(t_list *, void *),
 					void *param);
+
+// Experimental
+/**
+ * @brief simple implementation of atof
+ * @param str str to convert to a float
+ */
+float			ft_atof(const char *str);
 
 #endif

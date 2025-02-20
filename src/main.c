@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbreeze <hbreeze@student.42.fr>            #+#  +:+       +#+        */
+/*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-25 16:38:10 by hbreeze           #+#    #+#             */
-/*   Updated: 2024-11-25 16:38:10 by hbreeze          ###   ########.fr       */
+/*   Created: 2024/11/25 16:38:10 by hbreeze           #+#    #+#             */
+/*   Updated: 2025/02/20 16:36:20 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,25 @@ int	execute_commands(int n, t_list *cmdv, int input_fd, int output_fd)
 	return (status);
 }
 
-void	cleanup(int fds[2], t_list *lst)
+int	parse_flags(int *argc, char ***argv, int *io_fds, int *err)
 {
-	close(fds[0]);
-	close(fds[1]);
-	ft_lstclear(&lst, (void (*)(void *))ft_deletesplit);
+	int	flag;
+
+	if (!ft_strncmp((*argv)[1], "here_doc", 9))
+		flag = 1;
+	else if (!ft_strncmp((*argv)[1], "append_doc", 11))
+		flag = 3;
+	else if (!ft_strncmp((*argv)[1], "append_", 8))
+		flag = 2;
+	else
+		flag = 0;
+	(*argv) += 1 * (!!flag);
+	(*argc) -= 1 * (!!flag);
+	if (flag & 1)
+		setup_heredoc((*argv)[1], io_fds);
+	else
+		io_fds[0] = validate_inputfile((*argv)[1], err);
+	return (flag);
 }
 
 int	main(int argc, char **argv)
@@ -69,20 +83,14 @@ int	main(int argc, char **argv)
 	int		err;
 	int		fds[2];
 	t_list	*cmdv;
+	int		flag;
 
 	if (argc < 5)
-	{
-		ft_putendl_fd(PUSAGE, STDERR_FILENO);
-		return (1);
-	}
-	err = 0; 
-	// validate output file / create.
-	// validate input file.
-	fds[0] = validate_inputfile(argv[1], &err);
-	fds[1] = validate_outputfile(argv[argc - 1], &err);
-	// validate all commands and create stack.
+		return (exit_clause(1));
+	err = 0;
+	flag = parse_flags(&argc, &argv, fds, &err);
+	fds[1] = validate_outputfile(argv[argc - 1], &err, flag);
 	cmdv = enqueue_cmds(argc, argv, &err);
-	// if error at all, free everything and print the errors.
 	if (!err)
 		err = execute_commands(argc - 3, cmdv, fds[0], fds[1]);
 	cleanup(fds, cmdv);

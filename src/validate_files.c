@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_files.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbreeze <hbreeze@student.42.fr>            #+#  +:+       +#+        */
+/*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-25 16:40:30 by hbreeze           #+#    #+#             */
-/*   Updated: 2024-11-25 16:40:30 by hbreeze          ###   ########.fr       */
+/*   Created: 2024/11/25 16:40:30 by hbreeze           #+#    #+#             */
+/*   Updated: 2025/02/20 16:40:42 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	validate_inputfile(char *path, int *error)
 	return (fd);
 }
 
-int	validate_outputfile(char *path, int *error)
+int	validate_outputfile(char *path, int *error, int flag)
 {
 	int	fd;
-
+	
 	if (!path || !error)
 		return (0);
 	if (access(path, F_OK) == 0 && access(path, R_OK) != 0)
@@ -40,13 +40,17 @@ int	validate_outputfile(char *path, int *error)
 		return (0);
 	}
 	else if (access(path, F_OK) != 0)
-		fd = open(path, O_WRONLY | O_CREAT, 0755);
+		fd = open(path, O_WRONLY | O_CREAT
+			| (O_APPEND * !!(flag & 2)), 0755);
 	else
-		fd = open(path, O_WRONLY | O_TRUNC);
+		fd = open(path, O_WRONLY
+			| (O_APPEND * !!(flag & 2))
+			| (O_TRUNC * !(flag & 2)));
 	if (fd < 0)
 	{
 		*error |= OUTPUTFILEERR;
 		perror(path);
 	}
 	return (fd);
+	
 }

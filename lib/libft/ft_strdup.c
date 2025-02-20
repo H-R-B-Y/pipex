@@ -6,12 +6,12 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 21:08:45 by hbreeze           #+#    #+#             */
-/*   Updated: 2024/09/05 12:06:19 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/02/13 16:37:06 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
+#include "./include/libft.h"
 
 char	*ft_strdup(const char *src)
 {

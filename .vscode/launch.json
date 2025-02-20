@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceRoot}/pipex",
-			"args": ["Makefile", "wc -l", "cat", "wc -m", "cat", "ouput"],
+			"args": ["append_doc", "EOF", "cat", "wc -m", "cat", "output"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceRoot}",
 			"environment": [],

@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 18:00:58 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/02/13 16:37:06 by hbreeze          ###   ########.fr       */
+/*   Created: 2025/02/20 16:32:12 by hbreeze           #+#    #+#             */
+/*   Updated: 2025/02/20 16:33:13 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./include/libft.h"
+#include "../include/pipex.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+void	cleanup(int fds[2], t_list *lst)
 {
-	size_t	i;
-	char	*str;
+	close(fds[0]);
+	close(fds[1]);
+	ft_lstclear(&lst, (void (*)(void *))ft_deletesplit);
+}
 
-	str = s;
-	i = 0;
-	while (i < n)
-		str[i++] = c;
-	return (str);
+int	exit_clause(int err)
+{
+	if (err)
+		ft_putendl_fd(PUSAGE, STDERR_FILENO);
+	return (err);
 }

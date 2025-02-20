@@ -6,28 +6,16 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 01:43:04 by hbreeze           #+#    #+#             */
-/*   Updated: 2024/09/25 12:15:57 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/02/20 16:02:35 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 void	to_upper_wrapper(unsigned int x, char *c)
 {
 	(void)x;
 	*c = ft_toupper(*c);
-}
-
-void	*zeroit(void *ptr, size_t n)
-{
-	size_t	index;
-
-	if (!ptr)
-		return (0);
-	index = 0;
-	while (index < n)
-		((unsigned char *) ptr)[index++] = (unsigned char ) '\0';
-	return (ptr);
 }
 
 char	*str_join_and_free(char *s1, char *s2, unsigned int flag)

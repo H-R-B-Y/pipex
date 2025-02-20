@@ -22,7 +22,7 @@ SRC			= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 			ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c \
 			ft_substr.c ft_tolower.c ft_toupper.c ft_memmove.c
 # Extra functions
-SRC			+= ft_iswhitespace.c
+SRC			+= ft_iswhitespace.c ft_splitquoted.c ft_splitfn.c ft_atof.c
 
 # Bonus functions
 BSRC		= ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c \
@@ -32,7 +32,7 @@ BSRC		= ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_
 BSRC		+= ft_lstiter_param_bonus.c
 
 # get next line
-GNLDIR		= get_next_line
+GNLDIR		= ft_gnl
 GNLSRC		= $(GNLDIR)/get_next_line.c \
 			$(GNLDIR)/get_next_line_utils.c
 
@@ -60,37 +60,47 @@ PRNTOBJ		= $(PRNTSRC:.c=.o)
 # ██   ██ ███████  ██████ ██ ██      ███████ 
 
 
-all:		$(NAME) bonus print
+all:		pre $(NAME) bonus print get_next_line post
 
 $(NAME):	$(OBJ)
-			$(AR) $(NAME) $(OBJ)
+			@$(AR) $(NAME) $(OBJ)
 
 .c.o:
-		$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
+			@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS)
 
 bonus:		$(BOBJ)
-			$(AR) $(NAME) $(BOBJ)
+			@$(AR) $(NAME) $(BOBJ)
 
 print:		$(OBj) $(PRNTOBJ)
-			$(AR) $(NAME) $(OBJ) $(PRNTOBJ)
+			@$(AR) $(NAME) $(OBJ) $(PRNTOBJ)
 
 get_next_line:	$(OBJ) $(GNLOBJ)
-			$(AR) $(NAME) $(GNLOBJ)
+			@$(AR) $(NAME) $(GNLOBJ)
 
 clean:
-			rm -f $(OBJ) $(BOBJ) $(PRNTOBJ) $(GNLOBJ)
+			@rm -f $(OBJ) $(BOBJ) $(PRNTOBJ) $(GNLOBJ)
 
-fclean:		clean
-			rm -f libft.a libft.so
+fclean:		pre clean post
+			@rm -f libft.a libft.so
 
 re:			fclean all
 
 .PHONY:		re all clean fclean bonus
 
+pre:
+	@echo
+	@echo "   /)  /)",
+	@echo " ପ(˶•-•˶)ଓ ♡",
+	@echo -n "  /づ  づ ˚₊‧꒰$(NAME) :: $(MAKECMDGOALS) :: Wait  ꒱ ‧₊˚⭒"
+
+post:
+	@echo "\b\b\b\b\b\b\b\b\b\b\b\b\bDone  ꒱ ‧₊˚⭒"
+	@echo 
+
 # For portable object files
 so:
-			$(CC) -nostartfiles -fPIC $(CFLAGS) -c $(SRC) $(BSRC) $(GNLSRC) $(PRNTSRC)
-			gcc -nostartfiles -shared -o libft.so $(OBJ) $(BOBJ) $(GNLOBJ) $(PRNTOBJ)
+			@$(CC) -nostartfiles -fPIC $(CFLAGS) -c $(SRC) $(BSRC) $(GNLSRC) $(PRNTSRC)
+			@gcc -nostartfiles -shared -o libft.so $(OBJ) $(BOBJ) $(GNLOBJ) $(PRNTOBJ)
 
 # ███    ██  ██████  ████████ ███████ 
 # ████   ██ ██    ██    ██    ██      

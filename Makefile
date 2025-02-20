@@ -12,7 +12,9 @@ SRC_DIR			:= ./src
 SRCS			:= $(SRC_DIR)/get_cmd.c \
 				$(SRC_DIR)/stack_handler.c \
 				$(SRC_DIR)/utils.c \
-				$(SRC_DIR)/validate_files.c
+				$(SRC_DIR)/validate_files.c \
+				$(SRC_DIR)/handle_heredoc.c \
+				$(SRC_DIR)/cleanup.c
 
 OBJS			:= ${SRCS:.c=.o}
 

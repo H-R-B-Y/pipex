@@ -6,11 +6,11 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 16:15:32 by hbreeze           #+#    #+#             */
-/*   Updated: 2024/09/25 12:16:19 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/02/13 16:38:23 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 void	char_and_string(t_conv *c)
 {

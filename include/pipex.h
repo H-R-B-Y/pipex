@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbreeze <hbreeze@student.42.fr>            #+#  +:+       +#+        */
+/*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-25 14:58:48 by hbreeze           #+#    #+#             */
-/*   Updated: 2024-11-25 14:58:48 by hbreeze          ###   ########.fr       */
+/*   Created: 2024/11/25 14:58:48 by hbreeze           #+#    #+#             */
+/*   Updated: 2025/02/20 16:33:11 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PIPEX_H
 
 # include "libft.h"
+# include "get_next_line.h"
 # include "ft_printf.h"
-
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -49,8 +49,12 @@ t_list	*ft_lstpop(t_list **lst);
 void	ft_deletesplit(char **splt);
 
 // file validation
-int	validate_outputfile(char *path, int *error);
+int	validate_outputfile(char *path, int *error, int flag);
 int	validate_inputfile(char *path, int *error);
 
+int	setup_heredoc(char *endstr, int *io_fds);
+
+int		exit_clause(int err);
+void	cleanup(int fds[2], t_list *lst);
 
 #endif

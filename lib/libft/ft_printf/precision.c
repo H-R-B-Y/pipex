@@ -6,11 +6,11 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:42:27 by hbreeze           #+#    #+#             */
-/*   Updated: 2024/09/25 12:29:29 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/02/13 16:38:23 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 
 t_conv	*truncate_precision(t_conv *c)
 {

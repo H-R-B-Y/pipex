@@ -6,12 +6,12 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 10:37:06 by hbreeze           #+#    #+#             */
-/*   Updated: 2024/08/31 13:08:27 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/02/13 16:37:06 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
+#include "./include/libft.h"
 
 char	*ft_substr(char const *s, size_t start, size_t len)
 {
