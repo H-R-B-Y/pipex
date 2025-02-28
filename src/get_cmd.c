@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 15:04:22 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/02/20 17:59:11 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/02/28 12:29:51 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ char	*get_cmdpath(char *cmd)
 
 	paths = get_path();
 	index = 0;
-	cmd = ft_strjoin("/", cmd);
+	tmp = ft_strjoin("/", cmd);
+	free(cmd);
+	cmd = tmp;
 	if (!cmd)
 		return ((void *)0);
 	while (paths && paths[index])

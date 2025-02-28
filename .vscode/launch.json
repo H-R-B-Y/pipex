@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceRoot}/pipex",
-			"args": ["Readme.md", "cat", "wc -l", "grep A", "output"],
+			"args": ["Readme.md", "cat", "wc -l", "./touppper.out", "output"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceRoot}",
 			"environment": [],

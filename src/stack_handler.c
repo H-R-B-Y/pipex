@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:27:20 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/02/20 17:25:16 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/02/28 12:36:34 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_cmddesc	get_validcmd(char *cmd)
 	cmdsplt = ft_split(cmd, ' ');
 	if (!cmdsplt)
 		return (0);
-	realpath = cmdsplt[0];
+	realpath = ft_strdup(cmdsplt[0]);
 	if (!(realpath[0] == '.' || realpath[0] == '/'))
 		realpath = get_cmdpath(realpath);
 	if (!realpath || !check_cmdpath(realpath))
@@ -67,7 +67,7 @@ t_list	*enqueue_cmds(int argc, char **argv, int *err)
 
 	iter = argc;
 	iter -= 4;
-	argv += 2;
+ 	argv += 2;
 	output = 0;
 	while (iter >= 0)
 	{
