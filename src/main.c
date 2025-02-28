@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:38:10 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/02/20 18:06:18 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/02/28 12:15:42 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,12 @@ Redirect the reading end of the io_pipe to stdin so \
 	executed command reads from pipe/file.
 Then execute the command in cmd!
 */
-void	child_process_prep(int n, t_cmddesc cmd, int io_fd[2], int pipe[2])
+void	child_process_prep(int n[2], t_list *cmdv, int io_fd[2], int pipe[2])
 {
-	if (n > 1)
+	t_cmddesc	cmd;
+
+	cmd = ft_lstget(cmdv, n[1])->content;
+	if (n[0] - n[1] > 1)
 	{
 		dup2(pipe[1], STDOUT_FILENO);
 		close(pipe[0]);
@@ -42,7 +45,9 @@ void	child_process_prep(int n, t_cmddesc cmd, int io_fd[2], int pipe[2])
 		dup2(io_fd[1], STDOUT_FILENO);
 	dup2(io_fd[0], STDIN_FILENO);
 	close(io_fd[0]);
-	execve(cmd[0], &cmd[0], environ);
+	close(io_fd[1]);
+	if (execve(cmd[0], &cmd[0], environ) < 0)
+		cleanup(0, 0, cmdv, "execve");
 }
 
 /*
@@ -75,30 +80,33 @@ The final command then returns it retcode all the way back to the \
 and this ret code is returned to the main function to act as the retcode for
 pipex.out
 */
-int	execute_commands(int n, t_list *cmdv, int input_fd, int output_fd)
+// io_fd [0] input
+// io_fd [1] output
+int	execute_commands(int n[2], t_list *cmdv, int io_fd[2])
 {
 	int		pipe_fd[2];
 	pid_t	pid;
 	int		status;
 
-	if (n > 1)
-		pipe(pipe_fd);
+	if (n[0] - n[1] > 1 && pipe(pipe_fd) < 0)
+		cleanup(io_fd, (void *)0, cmdv, "pipe");
 	status = 0;
 	pid = fork();
-	if (pid == 0)
-		child_process_prep(n, cmdv->content,
-			(int [2]){input_fd, output_fd}, pipe_fd);
+	if (pid < 0)
+		cleanup(io_fd, pipe_fd, cmdv, "fork");
+	else if (pid == 0)
+		child_process_prep(n, cmdv, io_fd, pipe_fd);
 	else
 	{
-		if (n > 1)
+		if (n[0] - n[1] > 1)
 		{
 			close(pipe_fd[1]);
-			status = execute_commands(n - 1, cmdv->next, pipe_fd[0], output_fd);
-			close(pipe_fd[0]);
+			status = execute_commands((int [2]){n[0], n[1] + 1},
+					cmdv, (int [2]){pipe_fd[0], io_fd[1]});
 		}
 		else
 			waitpid(pid, &status, 0);
-		close(input_fd);
+		close(io_fd[0]);
 	}
 	return (status);
 }
@@ -138,9 +146,13 @@ int	main(int argc, char **argv)
 	fds[1] = validate_outputfile(argv[argc - 1], &err, flag);
 	cmdv = enqueue_cmds(argc, argv, &err);
 	if (!err)
-		err = execute_commands(argc - 3, cmdv, fds[0], fds[1]);
-	cleanup(fds, cmdv);
-	if (err)
-		err = WEXITSTATUS(err);
-	return (err);
+	{
+		err = execute_commands((int [2]){argc - 3, 0}, cmdv, fds);
+		cleanup((int [2]){0, fds[1]}, (void *)0, cmdv, (void *)0);
+		if (err)
+			err = WEXITSTATUS(err);
+		return (err);
+	}
+	cleanup(fds, (void *)0, cmdv, (void *)0);
+	return (exit_clause(1));
 }
