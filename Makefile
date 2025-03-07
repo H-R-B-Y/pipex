@@ -47,12 +47,3 @@ re: fclean all
 
 .PHONY: all, clean, fclean, re, test
 
-# HB_MATH_DIR		:= $(abspath $(LIB_DIR)/hb_math_ext)
-# HB_MATH			:= $(HB_MATH_DIR)/hb_math_ext.a
-# LIBMLX_DIR		:= $(abspath $(LIB_DIR)/MLX42)
-# LIBMLX			:= $(LIBMLX_DIR)/build/libmlx42.a
-# LIBFLAGS		:=  -ldl `pkg-config --libs glfw3` -pthread -lm
-# $(LIBMLX):
-# 		cmake $(LIBMLX_DIR) -B $(LIBMLX_DIR)/build && make CFLAGS="$(CFLAGS)" -C $(LIBMLX_DIR)/build -j4
-# $(HB_MATH):
-# 		$(MAKE) --directory $(HB_MATH_DIR) all CFLAGS="$(CFLAGS)"
