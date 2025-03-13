@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:38:10 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/02/28 12:15:42 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/07 15:01:05 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,5 +154,5 @@ int	main(int argc, char **argv)
 		return (err);
 	}
 	cleanup(fds, (void *)0, cmdv, (void *)0);
-	return (exit_clause(1));
+	return (1);
 }

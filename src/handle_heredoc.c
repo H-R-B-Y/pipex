@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 15:38:36 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/02/23 18:01:57 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/13 12:51:02 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,17 @@ void	read_ln_heredoc(char *endstr, int child_input, int child_output)
 
 	len = ft_strlen(endstr);
 	tmp = get_next_line(child_input);
-	while (tmp)
+	if (ft_strchr(tmp, '\n'))
+		*(ft_strchr(tmp, '\n')) = '\0';
+	while (tmp && ft_strncmp(tmp, endstr, len + 1))
 	{
-		if (tmp && !ft_strncmp(tmp, endstr, len))
-		{
-			free(tmp);
-			close(child_input);
-			close(child_output);
-			return ;
-		}
-		ft_putstr_fd(tmp, child_output);
+		ft_putendl_fd(tmp, child_output);
 		free(tmp);
 		tmp = get_next_line(child_input);
+		if (ft_strchr(tmp, '\n'))
+			*(ft_strchr(tmp, '\n')) = '\0';
 	}
+	free(tmp);
 	close(child_input);
 	close(child_output);
 	return ;
