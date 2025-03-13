@@ -6,7 +6,7 @@
 /*   By: hbreeze <hbreeze@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 16:38:10 by hbreeze           #+#    #+#             */
-/*   Updated: 2025/03/07 15:01:05 by hbreeze          ###   ########.fr       */
+/*   Updated: 2025/03/13 12:52:07 by hbreeze          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	execute_commands(int n[2], t_list *cmdv, int io_fd[2])
 		}
 		else
 			waitpid(pid, &status, 0);
-		close(io_fd[0]);
+		close(io_fd[0]); // Can we close this earlier please so its not hanging
 	}
 	return (status);
 }
