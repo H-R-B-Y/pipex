@@ -1,0 +1,5 @@
+Known issues:
+- If passed command is nothing i.e. "" then we segfault
+- Heredoc might error if a line is passed through it that is longer than the size of the pipe
+- there is a hanging file descriptor (pipe) that waits for the last command to finish
+
